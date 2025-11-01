@@ -1,0 +1,33 @@
+{
+  "failures": {
+    "required": "this field is required",
+    "only letters": "Numbers are not allowed in this field",
+    "between3and50": "Minimum length of 3 and a maximum length of 50.",
+    "grater_date": {
+      "empty": "this field is required",
+      "grater_than_error": "this date should be grater than start date"
+    },
+    "phone": {
+      "empty": "Phone number is required",
+      "not_valid": "Please enter valid phone number ",
+      "not_valid_country": "Invalid code",
+      "phone_number": "Phone number",
+      "phoneNumber": "Phone number"
+    },
+    "no_internet": "You are currently offline.",
+    "internet_restored": "Your internet connection was restored.",
+    "not_verified": "You need to sign up first",
+    "server_error": "There is error in the server",
+    "time_out": "request time out, no server response",
+    "some_thing_wrong": "Some Thing Went Wrong!",
+    "unexpectedResponse": "Error while parsing data.",
+    "no_connection": "No Internet Connection",
+    "internet_try_again": "Please check your internet settings and try again",
+    "no_more_data": "No more data",
+    "Retry": "Retry"
+  }
+
+}
+
+
+

@@ -1,0 +1,53 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:micropolis_assessment/core/utils/extentions.dart';
+import 'package:micropolis_assessment/features/mainPage/presentation/widgets/post_skeleton_widget.dart';
+import 'package:micropolis_assessment/features/mainPage/presentation/widgets/post_widget.dart';
+
+import '../../../../core/presentation/resources/assets.gen.dart';
+import '../../../../core/presentation/widgets/paginated_list.dart';
+import '../../../../core/presentation/widgets/svg_icon.dart';
+import '../../data/models/post_model.dart';
+import '../cubits/socials/socials_cubit.dart';
+
+class LatestPostsTab extends StatefulWidget {
+  final SocialsPageCubit cubit;
+
+  const LatestPostsTab({super.key, required this.cubit});
+
+  @override
+  State<LatestPostsTab> createState() => _LatestPostsTabState();
+}
+
+class _LatestPostsTabState extends State<LatestPostsTab>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return PaginatedList<PostModel>(
+      padding: EdgeInsets.symmetric(vertical: 20.h),
+      paginationCubit: widget.cubit.latestPaginationCubit,
+      isPaginated: true,
+      itemBuilder: (item) => PostWidget(postItem: item, cubit: widget.cubit),
+      separator: Divider(endIndent: 20.w, indent: 20.w),
+      skeletonItemBuilder: (context, index) => const PostSkeleton(),
+      noData: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CustomSvgIcon(Assets.icons.noResultSearch, size: 120.sp),
+            SizedBox(height: 8.h),
+            Text(
+              "No posts",
+              style: context.textTheme.displayMedium,
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

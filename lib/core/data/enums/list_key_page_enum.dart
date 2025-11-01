@@ -1,0 +1,1 @@
+enum ListKeysPage { posts,comments }
